@@ -2,7 +2,7 @@
 
 $TESTING = false unless defined? $TESTING
 
-require 'md5'
+require 'digest/md5'
 require 'socket'
 
 ##
@@ -227,8 +227,9 @@ class Growl
 
     packet = packet.pack GNR_FORMAT
 
-    checksum = MD5.new packet
-    checksum.update @password unless @password.nil?
+    checksum = Digest::MD5.new
+    checksum << packet
+    checksum << @password unless @password.nil?
 
     packet << checksum.digest
 
@@ -265,8 +266,9 @@ class Growl
     packet << data.join
     packet = packet.pack GNN_FORMAT
 
-    checksum = MD5.new packet
-    checksum.update @password unless @password.nil?
+    checksum = Digest::MD5.new 
+    checksum << packet
+    checksum << @password unless @password.nil?
 
     packet << checksum.digest
 

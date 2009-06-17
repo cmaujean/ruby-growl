@@ -64,7 +64,7 @@ class TestGrowl < Test::Unit::TestCase
 
     packet = @growl.registration_packet
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -88,7 +88,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", 0, false
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -112,7 +112,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", -2, false
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -136,7 +136,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", -1, false
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -160,7 +160,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", 1, false
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -184,7 +184,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", 2, false
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
@@ -208,7 +208,7 @@ class TestGrowl < Test::Unit::TestCase
     packet = @growl.notification_packet "Command-Line Growl Notification",
                                         "", "hi", 0, true
 
-    packet = packet.split(//).map { |char| "%02x" % char[0] }
+    packet = packet.split(//).map { |char| "%02x" % char[0].ord }
 
     assert_equal expected, packet
   end
